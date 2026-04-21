@@ -1,0 +1,833 @@
+/* ============================================================
+   VELORA London — Ultra Luxury Visual System
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap');
+
+:root {
+  --black:       #0A0A0A;
+  --black-soft:  #111111;
+  --ivory:       #F5F3EF;
+  --ivory-dim:   #D8D4CB;
+  --ivory-mute:  #8A867E;
+  --gold:        #C9A96E;
+  --gold-soft:   #B5935A;
+  --gold-faint:  rgba(201, 169, 110, 0.18);
+  --glass:       rgba(255, 255, 255, 0.045);
+  --glass-hi:    rgba(255, 255, 255, 0.08);
+  --line:        rgba(245, 243, 239, 0.10);
+  --line-gold:   rgba(201, 169, 110, 0.28);
+  --ease:        cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--black);
+  color: var(--ivory);
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  overflow-x: hidden;
+  background:
+    radial-gradient(ellipse at 20% -10%, rgba(201, 169, 110, 0.06), transparent 45%),
+    radial-gradient(ellipse at 100% 100%, rgba(201, 169, 110, 0.04), transparent 50%),
+    var(--black);
+  min-height: 100vh;
+}
+
+/* ============================================================
+   Typography
+   ============================================================ */
+.display, h1, h2, h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  letter-spacing: 0.005em;
+  color: var(--ivory);
+}
+
+h1 { font-size: clamp(3rem, 6.5vw, 6.5rem); line-height: 1.02; letter-spacing: -0.015em; }
+h2 { font-size: clamp(2.2rem, 4vw, 4rem);   line-height: 1.08; letter-spacing: -0.01em; }
+h3 { font-size: clamp(1.3rem, 1.6vw, 1.75rem); line-height: 1.2; }
+
+p  { font-size: 1rem; color: var(--ivory-dim); max-width: 62ch; }
+.lede { font-size: 1.125rem; color: var(--ivory-dim); max-width: 58ch; }
+
+.eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 0.72rem;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.italic-serif {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.gold { color: var(--gold); }
+.hr-gold {
+  width: 48px; height: 1px;
+  background: var(--gold);
+  border: 0;
+  margin: 1.75rem 0;
+}
+
+/* ============================================================
+   Layout shell
+   ============================================================ */
+.shell {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 4vw, 4rem);
+}
+
+section {
+  padding: clamp(5rem, 10vw, 10rem) 0;
+  position: relative;
+}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1.4rem clamp(1.5rem, 4vw, 4rem);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(10, 10, 10, 0.55);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: 1.35rem;
+  letter-spacing: 0.48em;
+  color: var(--ivory);
+  padding-left: 0.48em; /* optical balance for letter-spacing */
+}
+.brand sup {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 0.5rem;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  margin-left: 0.6rem;
+  vertical-align: super;
+}
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+.nav-links a {
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ivory-dim);
+  transition: color 0.4s var(--ease);
+}
+.nav-links a:hover,
+.nav-links a.active { color: var(--gold); }
+
+.nav-book {
+  border: 1px solid var(--line-gold);
+  padding: 0.7rem 1.4rem;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.28em !important;
+  color: var(--ivory) !important;
+  transition: all 0.4s var(--ease);
+}
+.nav-book:hover {
+  background: var(--gold);
+  color: var(--black) !important;
+  border-color: var(--gold);
+}
+
+/* ============================================================
+   Buttons
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  padding: 1.1rem 2.2rem;
+  border: 1px solid var(--line-gold);
+  color: var(--ivory);
+  transition: all 0.5s var(--ease);
+  cursor: pointer;
+  background: transparent;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+}
+.btn:hover {
+  background: var(--gold);
+  color: var(--black);
+  border-color: var(--gold);
+  letter-spacing: 0.34em;
+}
+.btn-ghost {
+  border-color: transparent;
+  padding-left: 0.2rem;
+}
+.btn-ghost:hover {
+  background: transparent;
+  color: var(--gold);
+  letter-spacing: 0.34em;
+  border-color: transparent;
+}
+.btn .arrow {
+  width: 1.2rem; height: 1px;
+  background: currentColor;
+  position: relative;
+  transition: width 0.5s var(--ease);
+}
+.btn .arrow::after {
+  content: '';
+  position: absolute;
+  right: 0; top: -3px;
+  width: 7px; height: 7px;
+  border-top: 1px solid currentColor;
+  border-right: 1px solid currentColor;
+  transform: rotate(45deg);
+}
+.btn:hover .arrow { width: 1.8rem; }
+
+/* ============================================================
+   HERO (generic)
+   ============================================================ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-top: 6rem;
+  overflow: hidden;
+}
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 880px;
+}
+.hero h1 {
+  margin: 1.8rem 0 2rem;
+}
+.hero .lede {
+  margin-bottom: 3rem;
+  font-size: 1.2rem;
+  color: var(--ivory-dim);
+}
+.hero-actions {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+/* Floating glass droplet (CSS only) */
+.droplet-stage {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.droplet {
+  position: absolute;
+  top: 50%;
+  right: -4%;
+  transform: translateY(-50%);
+  width: clamp(360px, 42vw, 620px);
+  height: clamp(360px, 42vw, 620px);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255, 245, 220, 0.28), transparent 38%),
+    radial-gradient(circle at 70% 80%, rgba(201, 169, 110, 0.35), transparent 55%),
+    radial-gradient(circle at 50% 50%, rgba(201, 169, 110, 0.08), rgba(10, 10, 10, 0.0) 65%);
+  filter: blur(0.2px);
+  box-shadow:
+    inset 0 0 120px rgba(201, 169, 110, 0.18),
+    inset 20px 40px 80px rgba(255, 235, 200, 0.06),
+    0 80px 200px rgba(201, 169, 110, 0.15);
+  animation: floaty 14s ease-in-out infinite;
+}
+.droplet::before {
+  content: '';
+  position: absolute;
+  top: 18%; left: 22%;
+  width: 34%; height: 22%;
+  background: radial-gradient(ellipse at center, rgba(255, 250, 235, 0.55), transparent 70%);
+  border-radius: 50%;
+  filter: blur(8px);
+}
+.droplet::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(201, 169, 110, 0.22);
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(-50%) translateX(0); }
+  50%      { transform: translateY(-54%) translateX(-10px); }
+}
+
+/* ============================================================
+   Sections / utility
+   ============================================================ */
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 3rem;
+  margin-bottom: 4.5rem;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 2rem;
+}
+.section-head .head-left .eyebrow { margin-bottom: 1.2rem; display: block; }
+.section-head .head-right { max-width: 32ch; color: var(--ivory-mute); font-size: 0.95rem; }
+
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: center;
+}
+.split-media {
+  aspect-ratio: 4/5;
+  background:
+    radial-gradient(ellipse at 70% 30%, rgba(201, 169, 110, 0.28), transparent 55%),
+    linear-gradient(135deg, #1a1612 0%, #0a0a0a 50%, #14100c 100%);
+  border: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+}
+.split-media::before {
+  content: '';
+  position: absolute;
+  inset: 10%;
+  border: 1px solid var(--line-gold);
+  pointer-events: none;
+}
+.split-media .corner {
+  position: absolute;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+}
+.split-media .corner.tl { top: 1.25rem; left: 1.5rem; }
+.split-media .corner.br { bottom: 1.25rem; right: 1.5rem; }
+
+/* ============================================================
+   Service cards (Homepage)
+   ============================================================ */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem;
+}
+.service-card {
+  position: relative;
+  padding: 2.5rem 2rem 2.2rem;
+  background: var(--glass);
+  border: 1px solid var(--line);
+  transition: all 0.6s var(--ease);
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+}
+.service-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(201, 169, 110, 0.10), transparent 40%);
+  opacity: 0;
+  transition: opacity 0.6s var(--ease);
+}
+.service-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--line-gold);
+}
+.service-card:hover::before { opacity: 1; }
+.service-card .num {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--gold);
+  letter-spacing: 0.12em;
+  margin-bottom: 1.5rem;
+}
+.service-card h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+.service-card p {
+  font-size: 0.92rem;
+  color: var(--ivory-mute);
+  line-height: 1.6;
+}
+.service-card .link {
+  margin-top: 2rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* ============================================================
+   Signature Results (slider mock)
+   ============================================================ */
+.results {
+  text-align: center;
+}
+.results-slider {
+  position: relative;
+  margin-top: 3rem;
+  aspect-ratio: 16/8;
+  max-width: 1100px;
+  margin-inline: auto;
+  border: 1px solid var(--line);
+  overflow: hidden;
+  background: linear-gradient(90deg, #1a1612 0%, #0a0a0a 100%);
+}
+.results-slider .half {
+  position: absolute;
+  inset: 0;
+  width: 50%;
+  background:
+    radial-gradient(ellipse at 60% 40%, rgba(201, 169, 110, 0.18), transparent 60%),
+    linear-gradient(135deg, #161310, #0a0a0a);
+}
+.results-slider .half.after {
+  left: 50%;
+  background:
+    radial-gradient(ellipse at 40% 40%, rgba(245, 243, 239, 0.12), transparent 55%),
+    linear-gradient(135deg, #1e1a15, #100d08);
+}
+.results-slider .divider {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: var(--gold);
+  transform: translateX(-0.5px);
+}
+.results-slider .handle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--black);
+  font-size: 1rem;
+  box-shadow: 0 0 0 6px rgba(201, 169, 110, 0.14);
+}
+.results-slider .label {
+  position: absolute;
+  top: 1.25rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
+  color: var(--ivory-dim);
+  text-transform: uppercase;
+}
+.results-slider .label.before { left: 1.5rem; }
+.results-slider .label.after  { right: 1.5rem; color: var(--gold); }
+
+/* ============================================================
+   Testimonials
+   ============================================================ */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 5rem);
+}
+.testimonial {
+  border-top: 1px solid var(--line-gold);
+  padding-top: 2.5rem;
+}
+.testimonial blockquote {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  line-height: 1.35;
+  color: var(--ivory);
+  margin-bottom: 2rem;
+}
+.testimonial cite {
+  font-style: normal;
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* ============================================================
+   Location & Footer
+   ============================================================ */
+.location {
+  text-align: center;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 7rem 0;
+}
+.location h2 { margin-bottom: 1rem; }
+.location .addr {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.35rem;
+  color: var(--gold);
+  margin-top: 1.5rem;
+}
+.location p { margin: 0 auto; }
+
+footer {
+  padding: 4rem 0 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--line);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ivory-mute);
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+footer .footer-links { display: flex; gap: 2rem; }
+footer a:hover { color: var(--gold); }
+
+/* ============================================================
+   SERVICE MENU page
+   ============================================================ */
+.menu-section {
+  border-top: 1px solid var(--line);
+  padding: 5rem 0;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: clamp(2rem, 6vw, 6rem);
+}
+.menu-section .meta h2 { font-size: clamp(2rem, 3vw, 3rem); margin-bottom: 1rem; }
+.menu-section .meta p  { color: var(--ivory-mute); font-size: 0.95rem; max-width: 28ch; }
+.menu-list .row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  padding: 1.4rem 0;
+  border-bottom: 1px solid var(--line);
+  align-items: baseline;
+}
+.menu-list .row:last-child { border-bottom: none; }
+.menu-list .row .name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--ivory);
+}
+.menu-list .row .desc {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  color: var(--ivory-mute);
+  margin-top: 0.35rem;
+  letter-spacing: 0.02em;
+}
+.menu-list .row .price {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+/* ============================================================
+   EXPERIENCE page
+   ============================================================ */
+.editorial {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 4rem 0;
+}
+.editorial h2 { margin-bottom: 2rem; }
+.editorial p { margin-bottom: 1.75rem; font-size: 1.05rem; max-width: none; }
+.editorial .pullquote {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.6rem, 2.6vw, 2.4rem);
+  line-height: 1.3;
+  color: var(--ivory);
+  text-align: center;
+  padding: 3rem 1rem;
+  border-top: 1px solid var(--line-gold);
+  border-bottom: 1px solid var(--line-gold);
+  margin: 3rem 0;
+}
+
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 4rem;
+}
+.pillar {
+  padding: 2.5rem 2rem;
+  border: 1px solid var(--line);
+  background: var(--glass);
+}
+.pillar .num {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--gold);
+  margin-bottom: 1rem;
+  letter-spacing: 0.1em;
+}
+.pillar h3 { font-size: 1.4rem; margin-bottom: 0.75rem; }
+.pillar p  { font-size: 0.9rem; color: var(--ivory-mute); }
+
+/* ============================================================
+   BOOKING page
+   ============================================================ */
+.book-frame {
+  border: 1px solid var(--line);
+  background: var(--glass);
+  padding: clamp(1.5rem, 3vw, 3rem);
+  margin-top: 4rem;
+  backdrop-filter: blur(10px);
+}
+.stepper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  position: relative;
+  margin-bottom: 3rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+.step {
+  text-align: center;
+  position: relative;
+}
+.step .dot {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  margin: 0 auto 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--ivory-mute);
+  background: var(--black);
+}
+.step.done .dot { border-color: var(--gold); color: var(--gold); }
+.step.active .dot {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--black);
+  box-shadow: 0 0 0 6px rgba(201, 169, 110, 0.14);
+}
+.step .label {
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--ivory-mute);
+}
+.step.active .label, .step.done .label { color: var(--ivory); }
+
+.book-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+.book-body h3 { margin-bottom: 1.5rem; }
+
+.choice {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 1.4rem;
+  border: 1px solid var(--line);
+  margin-bottom: 0.8rem;
+  cursor: pointer;
+  transition: all 0.4s var(--ease);
+}
+.choice:hover { border-color: var(--line-gold); }
+.choice.selected {
+  border-color: var(--gold);
+  background: rgba(201, 169, 110, 0.06);
+}
+.choice .c-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+}
+.choice .c-meta {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  color: var(--ivory-mute);
+  margin-top: 0.2rem;
+  letter-spacing: 0.05em;
+}
+.choice .c-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--gold);
+}
+
+.summary {
+  padding: 2rem;
+  border: 1px solid var(--line-gold);
+  background: var(--glass-hi);
+}
+.summary h3 { font-size: 1.3rem; margin-bottom: 1.5rem; }
+.summary .row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.8rem 0;
+  border-bottom: 1px dashed var(--line);
+  font-size: 0.92rem;
+}
+.summary .row:last-of-type { border: 0; }
+.summary .row .k { color: var(--ivory-mute); letter-spacing: 0.08em; font-size: 0.78rem; text-transform: uppercase; }
+.summary .row .v { color: var(--ivory); font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; }
+.summary .total {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line-gold);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.summary .total .k { font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ivory-mute); }
+.summary .total .v { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.8rem; color: var(--gold); }
+
+.time-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+.time-pill {
+  padding: 0.9rem 0.4rem;
+  border: 1px solid var(--line);
+  text-align: center;
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  color: var(--ivory-dim);
+  cursor: pointer;
+  transition: all 0.4s var(--ease);
+}
+.time-pill:hover { border-color: var(--line-gold); color: var(--ivory); }
+.time-pill.selected {
+  border-color: var(--gold);
+  background: var(--gold);
+  color: var(--black);
+}
+.time-pill.disabled {
+  color: rgba(138, 134, 126, 0.35);
+  text-decoration: line-through;
+  cursor: not-allowed;
+}
+
+/* ============================================================
+   CONTACT page
+   ============================================================ */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(3rem, 6vw, 6rem);
+  align-items: start;
+}
+.contact-form { display: flex; flex-direction: column; gap: 1.5rem; }
+.field { display: flex; flex-direction: column; gap: 0.5rem; }
+.field label {
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.field input, .field textarea, .field select {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--line);
+  color: var(--ivory);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  padding: 0.5rem 0 0.75rem;
+  outline: none;
+  transition: border-color 0.4s var(--ease);
+}
+.field input:focus, .field textarea:focus, .field select:focus { border-color: var(--gold); }
+.field textarea { min-height: 120px; resize: vertical; }
+
+.contact-aside .item {
+  padding: 1.75rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.contact-aside .item:first-child { border-top: 1px solid var(--line); }
+.contact-aside .k {
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 0.6rem;
+}
+.contact-aside .v {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--ivory);
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 960px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .split, .testimonials-grid, .book-body, .contact-grid, .menu-section { grid-template-columns: 1fr; }
+  .pillars { grid-template-columns: 1fr; }
+  .stepper { grid-template-columns: repeat(4, 1fr); }
+  .nav-links a:not(.nav-book) { display: none; }
+  .section-head { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 560px) {
+  .services-grid { grid-template-columns: 1fr; }
+  .time-grid { grid-template-columns: repeat(3, 1fr); }
+  .droplet { opacity: 0.55; right: -30%; }
+}
